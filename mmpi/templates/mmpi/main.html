@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mmpi/main_style.css' %}">
+    <title>Тест СМИЛ</title>
+</head>
+<body>
+    <div class="description">
+        <h1 class="description_header">Тест СМИЛ</h1>
+        <p class="description_p">Стандартизированный метод исследования личности (СМИЛ) – адаптация теста MMPI, сделанная Людмилой Николаевной Собчик.
+            СМИЛ не имеет клинической направленности и основывается на индивидуально-типологическом подходе автора.</p>
+        <p class="description_p">В тесте 566 вопросов, среди которых есть вопросы для проверки достоверности полученных результатов, старайтесь отвечать искренне.
+            Тест выявляет показатели по всем основным шкалам и формирует из них график.
+            Также представлены материалы для интерпретации результатов.</p>
+    </div>
+
+    <div class="test">
+        Начать тестирование:
+        <a class="test_url" href="{% url 'mmpi:male_test' %}">Мужская версия</a>
+        <a class="test_url" href="{% url 'mmpi:female_test' %}">Женская версия</a>
+    </div>
+
+    <div class="more">
+        Информация о тесте (методичка):
+        <a class="more_url" href="{% url 'mmpi:more' %}">Подробная интерпретация</a>
+    </div>
+
+    <div class="example">
+        <a class="example_url" href="{% url 'mmpi:results' 'e55567ec-4900-11ee-bf65-f8a2d6486ed3' %}">Пример результатов</a>
+    </div>
+</body>
+</html>

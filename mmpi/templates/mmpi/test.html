@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Тест СМИЛ</title>
+    <link rel="stylesheet" href="{% static 'mmpi/test_style.css' %}">
+</head>
+<body>
+    <form method="post" action="{% url 'mmpi:results' uuid %}">
+        {% csrf_token %}
+        <ul class="questions">
+            {% for question in questions %}
+                <li class="questions_item" id="question{{ forloop.counter }}">
+                    {{ question.id }}. {{ question.text }}<br>
+                    <input class="questions_item_radio" type="radio" name="answer{{ forloop.counter }}"
+                           id="yes{{ forloop.counter }}" value="yes" required>
+                    <label for="yes{{ forloop.counter }}">Да</label>
+                    <input class="questions_item_radio" type="radio" name="answer{{ forloop.counter }}"
+                           id="no{{ forloop.counter }}" value="no" required>
+                    <label for="no{{ forloop.counter }}">Нет</label>
+                </li>
+            {% endfor %}
+        </ul>
+        <input class="complete" type="submit" name="complete" value="Завершить">
+    </form>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.complete').addEventListener('click', function () {
+                console.log(true);
+                document.querySelectorAll('.questions_item').forEach((item) => {
+                    var options = item.querySelectorAll('.questions_item_radio');
+                    if (!options[0].checked && !options[1].checked)
+                        item.scrollIntoView({behavior: 'smooth'});
+                });
+            });
+        });
+    </script>
+</body>
+</html>
