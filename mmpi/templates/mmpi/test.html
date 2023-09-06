@@ -14,7 +14,7 @@
                 <li class="questions_item" id="question{{ forloop.counter }}">
                     {{ question.id }}. {{ question.text }}<br>
                     <input class="questions_item_radio" type="radio" name="answer{{ forloop.counter }}"
-                           id="yes{{ forloop.counter }}" value="yes" required checked>
+                           id="yes{{ forloop.counter }}" value="yes" required>
                     <label for="yes{{ forloop.counter }}">Да</label>
                     <input class="questions_item_radio" type="radio" name="answer{{ forloop.counter }}"
                            id="no{{ forloop.counter }}" value="no" required>
