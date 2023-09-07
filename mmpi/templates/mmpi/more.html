@@ -57,16 +57,16 @@
         function hide(button, element) {
             document.querySelector(button).addEventListener('click', function () {
                 elem = document.querySelector(element);
-                if (elem.style.display == 'none')
-                    elem.style.display = 'inline-block';
-                else if (window.matchMedia('(max-width: 1000px)').matches)
+                if (elem.style.display == 'inline-block' && window.matchMedia('(max-width: 1000px)').matches)
                     elem.style.display = 'none';
+                else
+                    elem.style.display = 'inline-block';
             });
         }
-        
+
         window.addEventListener('DOMContentLoaded', function () {
-            hide('.nav-button', '.nav')
-            hide('.nav', '.nav')
+            hide('.nav-button', '.nav');
+            hide('.nav', '.nav');
         })
     </script>
 

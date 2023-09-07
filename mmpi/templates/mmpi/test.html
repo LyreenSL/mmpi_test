@@ -27,14 +27,36 @@
     </form>
 
     <script>
-        window.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+
             document.querySelector('.complete').addEventListener('click', function () {
-                console.log(true);
                 document.querySelectorAll('.questions_item').forEach((item) => {
                     var options = item.querySelectorAll('.questions_item_radio');
                     if (!options[0].checked && !options[1].checked)
                         item.scrollIntoView({behavior: 'smooth'});
                 });
+            });
+
+			var savedAnswers = JSON.parse(localStorage.getItem('answers'));
+			if (savedAnswers)
+				Object.entries(savedAnswers).forEach((item) => {
+					document.querySelector(`#${item[1]}${item[0].slice(8)}`).checked = true;
+				});
+
+			document.querySelectorAll('.questions_item').forEach((item) => {
+				item.addEventListener('change', function() {
+					var answers = JSON.parse(localStorage.getItem('answers'));
+					if (!answers)
+						answers = {};
+
+					var options = item.querySelectorAll('.questions_item_radio');
+					if (options[0].checked)
+						answers[item.id] = 'yes';
+					else if (options[1].checked)
+						answers[item.id] = 'no';
+
+					localStorage.setItem('answers', JSON.stringify(answers));
+				});
             });
         });
     </script>

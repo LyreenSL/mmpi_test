@@ -47,14 +47,19 @@
 
         <script type="text/javascript">
 
-            var currentPage = document.getElementById('current-page');
-            currentPage.href = currentPage.text = window.location.href;
-
             {% autoescape off %}
                 const keys = {{ keys }};
                 const values = {{ values }};
+                const uuid = '{{ uuid }}';
+                const clearLS = {{ clearLS }};
             {% endautoescape %}
-            keys[7] = '5'
+            keys[7] = '5';
+
+            var currentPage = document.getElementById('current-page');
+            currentPage.href = currentPage.text = window.location.href;
+
+            if (clearLS)
+                localStorage.removeItem('answers');
 
             Highcharts.chart('profile', {
 
@@ -83,6 +88,10 @@
 
                 credits: {
                     enabled: false
+                },
+
+                exporting: {
+                    filename: `smil_test_${uuid}`
                 }
             });
         </script>
