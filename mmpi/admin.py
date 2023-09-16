@@ -13,7 +13,7 @@ class FemaleQuestionAdmin(admin.ModelAdmin):
 
 
 class AverageDataAdmin(admin.ModelAdmin):
-    list_display = ['scale', 'yes', 'no', 'm_male', 'sigma_male', 'm_female', 'sigma_female']
+    list_display = ['id', 'scale', 'yes', 'no', 'm_male', 'sigma_male', 'm_female', 'sigma_female']
 
 
 class ResultsDataAdmin(admin.ModelAdmin):

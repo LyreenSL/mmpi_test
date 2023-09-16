@@ -19,7 +19,7 @@
             <div class="profile_chart" id="profile"></div>
         </div>
 
-        <table class="scales">
+        <table class="main-scales_table">
             <tr> <th>Шкала</th> <th>Результат</th> <th>Описание</th> </tr>
             <tr> <td>L</td> <td>{{ values.0 }}</td> <td>Шкала L (лжи) служит для оценки искренности ответов испытуемого. Высокие показатели выявляют ложные ответы.</td> </tr>
             <tr> <td>F</td> <td>{{ values.1 }}</td> <td>Шкала F служит для оценки достоверности, надежности получаемых результатов. При выкоких результатах тенденция к драматизации сложившихся обстоятельств.</td> </tr>
@@ -35,6 +35,17 @@
             <tr> <td>9</td> <td>{{ values.11 }}</td> <td>Шкала оптимизма (гиппомании) отражает энергетический потенциал и общий жизненный тонус личности.</td> </tr>
             <tr> <td>0</td> <td>{{ values.12 }}</td> <td>Шкала интроверсии – экстраверсии определяет степень отстранённости от социальной среды, закрытость, застенчивость.</td> </tr>
         </table>
+
+        <details class="additional-scales">
+            <summary class="additional-scales_summary">Дополнительные шкалы</summary>
+            <table class="additional-scales_table">
+                <tr> <th>Шкала</th> <th>Результат</th> </tr>
+                {% for scale in add_scales %}
+                    <tr> <td>{{ scale.0 }}</td> <td>{{ scale.1 }}</td> </tr>
+                {% endfor %}
+            </table>
+        </details>
+
 
         <p>Разброс показателей в пределах от 30 до 70 баллов определяет коридор нормы, показатели выше 70 или ниже 30 расцениваются как отклонение от нормы.
             Однако правильнее рассматривать шкалы относительно друг друга, особенно при общем повышении или понижении шкал профиля.
@@ -74,12 +85,12 @@
                 },
 
                 xAxis: {
-                    categories: [...keys.slice(0, 3), ...[''], ...keys.slice(3)]
+                    categories: [...keys.slice(0, 3), ...[''], ...keys.slice(3, 13)]
                 },
 
                 series: [{
                     name: 'Результат',
-                    data: [...values.slice(0, 3), ...[null], ...values.slice(3)]
+                    data: [...values.slice(0, 3), ...[null], ...values.slice(3, 13)]
                 }],
 
                 legend: {

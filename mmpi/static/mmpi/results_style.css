@@ -34,6 +34,15 @@ th {
     font-style: normal;
 }
 
+.additional-scales_summary {
+    font-size: 18px;
+    width: 260px;
+    max-width: 100%;
+    padding: 7px;
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
 .url {
     margin: 10px 10px 10px 0;
     border-radius: 8px;
@@ -45,7 +54,7 @@ th {
 }
 
 .url:link, .url:visited {
-    color: black;   
+    color: black;
     background-color: aquamarine;
 }
 
@@ -59,7 +68,7 @@ th {
         max-width: 100%;
         margin: 0;
     }
-    
+
     p, .url {
         margin: 10px 20px;
     }
